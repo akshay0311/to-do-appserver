@@ -9,7 +9,7 @@ router.get("/",todos.getTodos);
 router.post("/",todos.addTodo);
 
 // delete A todo
-router.delete("/",todos.delTodo);
+router.delete("/:id",todos.delTodo);
 
 
 module.exports = router;

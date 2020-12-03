@@ -11,9 +11,7 @@ module.exports.getTodos = (req,res)=> {
 
 
 module.exports.addTodo = (req,res)=> {
-    console.log("yeaaaaaaaaaaaaaaaaaah");
     let {title,completed} = req.body;
-    console.log(`the title is ${title}`);
     const todoItem = new todoModel({
         title,
         completed      
@@ -25,5 +23,12 @@ module.exports.addTodo = (req,res)=> {
 
 
 module.exports.delTodo = (req,res)=> {
-    console.log("delete")
+    const id = req.params.id;
+    todoModel.findById(id)
+    .remove()
+    .exec()
+    .then(result=>{
+        res.status(201).json("Delete Successfully")
+        })
+    .catch(err=>console.log(error))
 }
